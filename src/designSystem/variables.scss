@@ -1,0 +1,43 @@
+$font-xs: 8;
+$font-sm: 12;
+$font-md: 16;
+$font-lg: 20;
+$font-xl: 24;
+$font-xxl: 30;
+
+$font-h-xs: 24;
+$font-h-sm: 32;
+$font-h-md: 36;
+$font-h-lg: 48;
+$font-h-xl: 64;
+$font-h-xxl: 80;
+
+$breakpoints: (
+  "xs": 0,
+  "sm": 480,
+  "md": 768,
+  "lg": 1024,
+  "xl": 1440,
+  "xxl": 1920,
+);
+
+$align: (
+  "start": flex-start,
+  "center": center,
+  "end": flex-end,
+  "stretch": stretch,
+  "baseline": baseline,
+);
+
+$justify: (
+  "start": flex-start,
+  "center": center,
+  "end": flex-end,
+  "around": space-around,
+  "between": space-between,
+  "evenly": space-evenly,
+);
+
+$breakpointsNames: ("xs", "sm", "md", "lg", "xl", "xxl");
+$columns: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+$offsets: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);

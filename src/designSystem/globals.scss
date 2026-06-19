@@ -1,0 +1,148 @@
+@use "variables";
+@use "mediaQueries";
+@use "text";
+
+// ─── Layer 1: Palette primitives ─────────────────────────────────────────────
+// Raw color ramps — never reference these directly in components.
+// Swap brand colors here; semantic tokens below pick them up automatically.
+:root {
+  --palette-neutral-0: #ffffff;
+  --palette-neutral-50: #f9fafb;
+  --palette-neutral-100: #f3f4f6;
+  --palette-neutral-200: #e5e7eb;
+  --palette-neutral-400: #9ca3af;
+  --palette-neutral-600: #4b5563;
+  --palette-neutral-800: #1f2937;
+  --palette-neutral-900: #111827;
+  --palette-neutral-1000: #000000;
+
+  --palette-primary-100: #dbeafe;
+  --palette-primary-300: #93c5fd;
+  --palette-primary-500: #3b82f6; /* ← swap per project */
+  --palette-primary-700: #1d4ed8;
+  --palette-primary-900: #1e3a8a;
+
+  --palette-accent-300: #fcd34d;
+  --palette-accent-500: #f59e0b;
+  --palette-accent-700: #b45309;
+
+  --palette-error-500: #ef4444;
+  --palette-success-500: #22c55e;
+  --palette-warning-500: #f97316;
+}
+
+// ─── Layer 2: Semantic tokens ─────────────────────────────────────────────────
+// Components reference only these — never palette values directly.
+:root {
+  --color-bg: var(--palette-neutral-50);
+  --color-bg-raised: var(--palette-neutral-0);
+  --color-bg-sunken: var(--palette-neutral-100);
+  --color-bg-inverse: var(--palette-neutral-900);
+
+  --color-text: var(--palette-neutral-900);
+  --color-text-secondary: var(--palette-neutral-600);
+  --color-text-disabled: var(--palette-neutral-400);
+  --color-text-inverse: var(--palette-neutral-0);
+
+  --color-border: var(--palette-neutral-200);
+  --color-border-focus: var(--palette-primary-500);
+
+  --color-primary: var(--palette-primary-500);
+  --color-primary-hover: var(--palette-primary-700);
+  --color-primary-text: var(--palette-neutral-0);
+
+  --color-accent: var(--palette-accent-500);
+  --color-accent-hover: var(--palette-accent-700);
+
+  --color-error: var(--palette-error-500);
+  --color-success: var(--palette-success-500);
+  --color-warning: var(--palette-warning-500);
+
+  // Swap via next/font in layout.tsx: assign the font CSS variable here
+  --font-body: system-ui, -apple-system, sans-serif;
+  --font-heading: system-ui, -apple-system, sans-serif;
+}
+
+// ─── Dark mode ────────────────────────────────────────────────────────────────
+// Opt-in only: add data-theme="dark" to <html>. No prefers-color-scheme.
+[data-theme="dark"] {
+  --color-bg: var(--palette-neutral-900);
+  --color-bg-raised: var(--palette-neutral-800);
+  --color-bg-sunken: var(--palette-neutral-1000);
+  --color-bg-inverse: var(--palette-neutral-50);
+
+  --color-text: var(--palette-neutral-50);
+  --color-text-secondary: var(--palette-neutral-400);
+  --color-text-disabled: var(--palette-neutral-600);
+  --color-text-inverse: var(--palette-neutral-900);
+
+  --color-border: var(--palette-neutral-600);
+  --color-border-focus: var(--palette-primary-300);
+
+  --color-primary: var(--palette-primary-300);
+  --color-primary-hover: var(--palette-primary-500);
+  --color-primary-text: var(--palette-neutral-900);
+}
+
+// ─── CSS Reset ────────────────────────────────────────────────────────────────
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  height: -webkit-fill-available;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  font-family: var(--font-body);
+  font-size: #{variables.$font-md}px;
+  line-height: 1.5;
+}
+
+body {
+  overflow-x: hidden;
+  // Prevents layout shift when a scrollbar appears/disappears
+  margin-right: calc(-1 * (100vw - 100%));
+
+  &.freeze {
+    overflow-y: hidden;
+  }
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary-hover);
+  }
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
