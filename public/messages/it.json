@@ -1,0 +1,35 @@
+{
+  "header": {
+    "home": "Home",
+    "contact": "Contatti"
+  },
+  "footer": {
+    "copyright": "Tutti i diritti riservati"
+  },
+  "contact": {
+    "title": "Contatti",
+    "description": "Scrivici — compila il modulo qui sotto.",
+    "name": "Nome",
+    "email": "Email",
+    "message": "Messaggio",
+    "send": "Invia",
+    "loading": "Invio in corso…",
+    "successMessage": "Messaggio inviato!",
+    "errorMessage": "Invio fallito. Riprova.",
+    "errorPrefix": "Errore:"
+  },
+  "demo": {
+    "title": "Showcase componenti",
+    "subtitle": "Anteprima di ogni atom e organism incluso in questo template."
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "description": "La pagina che stai cercando non esiste.",
+    "backHome": "Torna alla home"
+  },
+  "error": {
+    "title": "Qualcosa è andato storto",
+    "description": "Si è verificato un errore imprevisto.",
+    "retry": "Riprova"
+  }
+}
