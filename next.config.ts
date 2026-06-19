@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   images: {
@@ -6,6 +9,9 @@ const nextConfig: NextConfig = {
     qualities: [75, 85],
     minimumCacheTTL: 2678400, // 31 days
   },
+  sassOptions: {
+    includePaths: ["./src"],
+  },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
