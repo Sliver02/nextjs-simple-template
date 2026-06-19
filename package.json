@@ -9,9 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@base-ui/react": "latest",
+    "@emailjs/browser": "latest",
+    "@hookform/resolvers": "latest",
+    "classnames": "latest",
     "next": "16.2.9",
+    "next-intl": "latest",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-hook-form": "latest",
+    "sharp": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -19,6 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "sass": "latest",
     "typescript": "^5"
   }
 }
