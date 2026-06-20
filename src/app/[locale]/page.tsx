@@ -11,8 +11,8 @@ export default async function Page() {
         <Container>
           <Row>
             <Col xs={12}>
-              <h1>{t("title")}</h1>
-              <p>{t("subtitle")}</p>
+              <h1 className={"text--h-lg"}>{t("title")}</h1>
+              <p className={"text--p-lg"}>{t("subtitle")}</p>
             </Col>
           </Row>
         </Container>
