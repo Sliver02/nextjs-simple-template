@@ -2,6 +2,7 @@
 
 import { Select as SelectPrimitive } from "@base-ui/react/select";
 import classNames from "classnames";
+import { useState } from "react";
 import styles from "./Select.module.scss";
 import { IoChevronDown } from "react-icons/io5";
 
@@ -14,45 +15,77 @@ export interface SelectOption {
 export interface SelectProps extends React.ComponentProps<typeof SelectPrimitive.Root> {
   label?: string;
   options: SelectOption[];
-  placeholder?: string;
   error?: string;
+  fullWidth?: boolean;
   className?: string;
 }
 
 export const Select = ({
   label,
   options,
-  placeholder = "Select…",
   error,
+  fullWidth,
   className,
+  onValueChange,
+  onOpenChange,
+  value,
+  defaultValue,
   ...props
-}: SelectProps) => (
-  <div className={classNames(styles.wrapper, className)}>
-    {label && <span className={styles.label}>{label}</span>}
-    <SelectPrimitive.Root {...props}>
-      <SelectPrimitive.Trigger
-        className={classNames(styles.trigger, { [styles.error]: error })}
+}: SelectProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [internalHasValue, setInternalHasValue] = useState(Boolean(defaultValue));
+
+  const hasValue = value !== undefined ? Boolean(value) : internalHasValue;
+  const floatLabel = isOpen || hasValue;
+
+  return (
+    <div className={classNames(styles.wrapper, { [styles.fullWidth]: fullWidth }, className)}>
+      <SelectPrimitive.Root
+        value={value}
+        defaultValue={defaultValue}
+        onValueChange={(newValue, event) => {
+          setInternalHasValue(Boolean(newValue));
+          onValueChange?.(newValue, event);
+        }}
+        onOpenChange={(open, event) => {
+          setIsOpen(open);
+          onOpenChange?.(open, event);
+        }}
+        {...props}
       >
-        <SelectPrimitive.Value placeholder={placeholder} />
-        <span aria-hidden className={styles.chevron}>
-          <IoChevronDown />
-        </span>
-      </SelectPrimitive.Trigger>
-      <SelectPrimitive.Positioner className={styles.positioner}>
-        <SelectPrimitive.Popup className={styles.popup}>
-          {options.map((opt) => (
-            <SelectPrimitive.Item
-              key={opt.value}
-              value={opt.value}
-              disabled={opt.disabled}
-              className={styles.item}
-            >
-              <SelectPrimitive.ItemText>{opt.label}</SelectPrimitive.ItemText>
-            </SelectPrimitive.Item>
-          ))}
-        </SelectPrimitive.Popup>
-      </SelectPrimitive.Positioner>
-    </SelectPrimitive.Root>
-    {error && <span className={styles.errorText}>{error}</span>}
-  </div>
-);
+        <SelectPrimitive.Trigger
+          className={classNames(styles.trigger, { [styles.error]: error })}
+        >
+          <span className={styles.value}>
+            <SelectPrimitive.Value />
+          </span>
+          <span aria-hidden className={styles.chevron}>
+            <IoChevronDown />
+          </span>
+        </SelectPrimitive.Trigger>
+        <SelectPrimitive.Positioner className={styles.positioner}>
+          <SelectPrimitive.Popup className={styles.popup}>
+            {options.map((opt) => (
+              <SelectPrimitive.Item
+                key={opt.value}
+                value={opt.value}
+                disabled={opt.disabled}
+                className={styles.item}
+              >
+                <SelectPrimitive.ItemText>{opt.label}</SelectPrimitive.ItemText>
+              </SelectPrimitive.Item>
+            ))}
+          </SelectPrimitive.Popup>
+        </SelectPrimitive.Positioner>
+      </SelectPrimitive.Root>
+      {label && (
+        <label
+          className={classNames(styles.label, { [styles.floated]: floatLabel })}
+        >
+          {label}
+        </label>
+      )}
+      {error && <span className={styles.errorText}>{error}</span>}
+    </div>
+  );
+};
