@@ -14,9 +14,15 @@
     "message": "Message",
     "send": "Send",
     "loading": "Sending…",
+    "reason": "Reason",
     "successMessage": "Message sent!",
     "errorMessage": "Failed to send. Please try again.",
-    "errorPrefix": "Error:"
+    "errorPrefix": "Error:",
+    "selectOptions": {
+      "general": "General enquiry",
+      "support": "Support",
+      "feedback": "Feedback"
+    }
   },
   "demo": {
     "title": "Component Showcase",

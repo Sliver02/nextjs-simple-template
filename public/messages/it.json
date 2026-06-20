@@ -14,9 +14,15 @@
     "message": "Messaggio",
     "send": "Invia",
     "loading": "Invio in corso…",
+    "reason": "Motivo",
     "successMessage": "Messaggio inviato!",
     "errorMessage": "Invio fallito. Riprova.",
-    "errorPrefix": "Errore:"
+    "errorPrefix": "Errore:",
+    "selectOptions": {
+      "general": "Richiesta generale",
+      "support": "Supporto",
+      "feedback": "Feedback"
+    }
   },
   "demo": {
     "title": "Showcase componenti",
