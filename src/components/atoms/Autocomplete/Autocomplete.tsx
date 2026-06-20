@@ -23,6 +23,7 @@ export interface AutocompleteProps {
   defaultValue?: string;
   onValueChange?: (value: string, eventDetails: AutocompletePrimitive.Root.ChangeEventDetails) => void;
   onOpenChange?: (open: boolean, eventDetails: AutocompletePrimitive.Root.ChangeEventDetails) => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   disabled?: boolean;
   name?: string;
 }
@@ -61,6 +62,7 @@ export const Autocomplete = ({
   defaultValue,
   onValueChange,
   onOpenChange,
+  onChange,
   disabled,
   name,
 }: AutocompleteProps) => {
@@ -82,6 +84,7 @@ export const Autocomplete = ({
         onValueChange={(newValue, event) => {
           setInternalHasValue(Boolean(newValue));
           onValueChange?.(newValue, event);
+          onChange?.({ target: { value: newValue, name: name ?? "" } } as React.ChangeEvent<HTMLInputElement>);
         }}
         onOpenChange={(open, event) => {
           setIsOpen(open);

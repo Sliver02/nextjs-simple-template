@@ -18,6 +18,7 @@ export interface SelectProps extends React.ComponentProps<typeof SelectPrimitive
 	error?: string;
 	fullWidth?: boolean;
 	className?: string;
+	onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export const Select = ({
@@ -28,6 +29,7 @@ export const Select = ({
 	className,
 	onValueChange,
 	onOpenChange,
+	onChange,
 	value,
 	defaultValue,
 	...props
@@ -46,6 +48,7 @@ export const Select = ({
 				onValueChange={(newValue, event) => {
 					setInternalHasValue(Boolean(newValue));
 					onValueChange?.(newValue, event);
+					onChange?.({ target: { value: newValue, name: props.name ?? "" } } as React.ChangeEvent<HTMLInputElement>);
 				}}
 				onOpenChange={(open, event) => {
 					setIsOpen(open);

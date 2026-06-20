@@ -110,28 +110,28 @@ export const Contact = () => {
 						</Col>
 						<Col xs={12} md={6}>
 							<Autocomplete
-								fullWidth
-								options={[
-									{ value: "patagonia", label: t("selectOptions.general") },
-									{ value: "andes", label: t("selectOptions.support") },
-									{ value: "atacama", label: t("selectOptions.feedback") },
-								]}
-								label={t("region")}
-								error={errors.region?.message}
-								{...register("region")}
-							/>
+							fullWidth
+							options={[
+								{ value: "patagonia", label: t("selectOptions.general") },
+								{ value: "andes", label: t("selectOptions.support") },
+								{ value: "atacama", label: t("selectOptions.feedback") },
+							]}
+							label={t("region")}
+							error={errors.region?.message}
+							{...register("region")}
+						/>
 						</Col>
 						<Col xs={12} md={6}>
 							<Select
-								options={[
-									{ value: "general", label: t("selectOptions.general") },
-									{ value: "support", label: t("selectOptions.support") },
-									{ value: "feedback", label: t("selectOptions.feedback") },
-								]}
-								label={t("reason")}
-								error={errors.reason?.message}
-								{...register("reason")}
-							/>
+							options={[
+								{ value: "general", label: t("selectOptions.general") },
+								{ value: "support", label: t("selectOptions.support") },
+								{ value: "feedback", label: t("selectOptions.feedback") },
+							]}
+							label={t("reason")}
+							error={errors.reason?.message}
+							{...register("reason")}
+						/>
 						</Col>
 						<Col xs={12}>
 							<Input
