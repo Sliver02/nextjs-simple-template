@@ -5,137 +5,137 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-heading);
-  font-weight: bold;
+	font-family: var(--font-heading);
+	font-weight: bold;
 
-  & + & {
-    margin-top: 1rem;
-  }
+	& + & {
+		margin-top: 1rem;
+	}
 
-  + p {
-    margin-top: 0.5rem;
-  }
+	+ p {
+		margin-top: 0.5rem;
+	}
 }
 
 h1 {
-  @include utils.toRem(font-size, variables.$font-h-xxl);
+	@include utils.toRem(font-size, variables.$font-h-xxl);
 }
 
 h2 {
-  @include utils.toRem(font-size, variables.$font-h-xl);
+	@include utils.toRem(font-size, variables.$font-h-xl);
 }
 
 h3 {
-  @include utils.toRem(font-size, variables.$font-h-lg);
+	@include utils.toRem(font-size, variables.$font-h-lg);
 }
 
 h4 {
-  @include utils.toRem(font-size, variables.$font-h-md);
+	@include utils.toRem(font-size, variables.$font-h-md);
 }
 
 p {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.6;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	line-height: 1.6;
 
-  & + & {
-    margin-top: 0.5rem;
-  }
+	& + & {
+		margin-top: 0.5rem;
+	}
 
-  & + h1,
-  & + h2,
-  & + h3,
-  & + h4 {
-    margin-top: 1rem;
-  }
+	& + h1,
+	& + h2,
+	& + h3,
+	& + h4 {
+		margin-top: 1rem;
+	}
 }
 
 .text {
-  &--align {
-    &-left {
-      text-align: left;
-    }
+	&--align {
+		&-left {
+			text-align: left;
+		}
 
-    &-center {
-      text-align: center;
-    }
+		&-center {
+			text-align: center;
+		}
 
-    &-right {
-      text-align: right;
-    }
-  }
+		&-right {
+			text-align: right;
+		}
+	}
 
-  &--h {
-    &-xs {
-      @include utils.toRem(font-size, variables.$font-h-xs);
-    }
+	&--h {
+		&-xs {
+			@include utils.toRem(font-size, variables.$font-h-xs);
+		}
 
-    &-sm {
-      @include utils.toRem(font-size, variables.$font-h-sm);
-    }
+		&-sm {
+			@include utils.toRem(font-size, variables.$font-h-sm);
+		}
 
-    &-md {
-      @include utils.toRem(font-size, variables.$font-h-md);
-    }
+		&-md {
+			@include utils.toRem(font-size, variables.$font-h-md);
+		}
 
-    &-lg {
-      @include utils.toRem(font-size, variables.$font-h-lg);
-    }
+		&-lg {
+			@include utils.toRem(font-size, variables.$font-h-lg);
+		}
 
-    &-xl {
-      @include utils.toRem(font-size, variables.$font-h-xl);
-    }
+		&-xl {
+			@include utils.toRem(font-size, variables.$font-h-xl);
+		}
 
-    &-xxl {
-      @include utils.toRem(font-size, variables.$font-h-xxl);
-    }
-  }
+		&-xxl {
+			@include utils.toRem(font-size, variables.$font-h-xxl);
+		}
+	}
 
-  &--p {
-    &-xs {
-      @include utils.toRem(font-size, variables.$font-xs);
-    }
+	&--p {
+		&-xs {
+			@include utils.toRem(font-size, variables.$font-xs);
+		}
 
-    &-sm {
-      @include utils.toRem(font-size, variables.$font-sm);
-    }
+		&-sm {
+			@include utils.toRem(font-size, variables.$font-sm);
+		}
 
-    &-md {
-      @include utils.toRem(font-size, variables.$font-md);
-    }
+		&-md {
+			@include utils.toRem(font-size, variables.$font-md);
+		}
 
-    &-lg {
-      @include utils.toRem(font-size, variables.$font-lg);
-    }
+		&-lg {
+			@include utils.toRem(font-size, variables.$font-lg);
+		}
 
-    &-xl {
-      @include utils.toRem(font-size, variables.$font-xl);
-    }
+		&-xl {
+			@include utils.toRem(font-size, variables.$font-xl);
+		}
 
-    &-xxl {
-      @include utils.toRem(font-size, variables.$font-xxl);
-    }
-  }
+		&-xxl {
+			@include utils.toRem(font-size, variables.$font-xxl);
+		}
+	}
 
-  &--strong {
-    font-weight: 700;
-  }
+	&--strong {
+		font-weight: 700;
+	}
 
-  &--italic {
-    font-style: italic;
-  }
+	&--italic {
+		font-style: italic;
+	}
 
-  &--line-height {
-    &-normal {
-      line-height: 1.6;
-    }
+	&--line-height {
+		&-normal {
+			line-height: 1.6;
+		}
 
-    &-relaxed {
-      line-height: 1.8;
-    }
+		&-relaxed {
+			line-height: 1.8;
+		}
 
-    &-loose {
-      line-height: 2;
-    }
-  }
+		&-loose {
+			line-height: 2;
+		}
+	}
 }

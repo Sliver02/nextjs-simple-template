@@ -1,12 +1,12 @@
 .contact {
-  padding: 4rem 0;
+	padding: 4rem 0;
 }
 
 .title {
-  composes: text--h-sm from global;
+	composes: text--h-sm from global;
 }
 
 .description {
-  composes: text--p-md from global;
-  color: var(--color-text-secondary);
+	composes: text--p-md from global;
+	color: var(--color-text-secondary);
 }

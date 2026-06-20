@@ -5,12 +5,14 @@
 Tokens live in `src/designSystem/globals.scss` and follow a strict two-layer rule:
 
 **Layer 1 — palette primitives** (raw values, never used in components directly):
+
 ```css
 --palette-neutral-0: #ffffff;
 --palette-primary-500: #0070f3;
 ```
 
 **Layer 2 — semantic tokens** (the only layer components touch):
+
 ```css
 --color-text: var(--palette-neutral-900);
 --color-primary: var(--palette-primary-500);
@@ -43,10 +45,12 @@ Files within `src/designSystem/` import each other by bare name (Sass resolves t
 ```
 
 Utility mixins:
+
 - `@include mq.media("md")` — `min-width` breakpoint guard (`xs sm md lg xl xxl`)
 - `@include utils.toRem(font-size, variables.$font-lg)` — px → rem conversion
 
 Global text utility classes (applied as plain class strings, not module refs):
+
 - `.text--h-xl`, `.text--p-lg`, `.text--align-center`, `.text--strong`, etc.
 - `.onlyMobile` / `.onlyDesktop` — responsive show/hide at `md` breakpoint
 
@@ -56,10 +60,14 @@ Global text utility classes (applied as plain class strings, not module refs):
 
 ```scss
 // wrong
-.card a { color: red; }
+.card a {
+	color: red;
+}
 
 // correct
-.link { color: red; }
+.link {
+	color: red;
+}
 ```
 
 **Consume design system values via `@use`, not inline literals.** Before writing a custom `font-size`, `color`, or breakpoint, check whether a DS variable, mixin, or utility class already covers it:
@@ -69,7 +77,7 @@ Global text utility classes (applied as plain class strings, not module refs):
 @use "../../../designSystem/variables";
 
 .title {
-  @include utils.toRem(font-size, variables.$font-h-sm); // not font-size: 2rem
+	@include utils.toRem(font-size, variables.$font-h-sm); // not font-size: 2rem
 }
 ```
 
@@ -86,6 +94,7 @@ app/[locale] — data-fetching pages assembled from templates/organisms
 ```
 
 Barrel re-exports enforce import hygiene:
+
 ```ts
 // correct
 import { Button } from "@/components/atoms/Button";
@@ -100,13 +109,19 @@ Accessible headless primitives from `@base-ui/react` are wrapped in thin adapter
 
 ```scss
 // Button
-&[data-disabled] { opacity: 0.4; }
+&[data-disabled] {
+	opacity: 0.4;
+}
 
 // Checkbox
-&[data-checked] .indicator { opacity: 1; }
+&[data-checked] .indicator {
+	opacity: 1;
+}
 
 // Select
-&[data-popup-open] .arrow { transform: rotate(180deg); }
+&[data-popup-open] .arrow {
+	transform: rotate(180deg);
+}
 ```
 
 ## i18n routing
@@ -116,13 +131,17 @@ Accessible headless primitives from `@base-ui/react` are wrapped in thin adapter
 Route structure: `app/[locale]/…` with `generateStaticParams` emitting one entry per locale.
 
 Navigation helpers from `@/i18n/routing` are locale-aware wrappers around Next.js primitives:
+
 - `Link` — locale-prefixed `<a>`
 - `usePathname` — path without locale prefix
 - `redirect`, `useRouter`, `getPathname`
 
 Switching locale:
+
 ```tsx
-<Link href={pathname} locale="it">IT</Link>
+<Link href={pathname} locale="it">
+	IT
+</Link>
 ```
 
 Messages load from `public/messages/{locale}.json` at request time via `src/i18n/request.ts`.
@@ -132,6 +151,7 @@ Messages load from `public/messages/{locale}.json` at request time via `src/i18n
 12-column fluid grid with a `--max-width: 1440px` container cap.
 
 Classes generated at build time for each breakpoint × each prop:
+
 - `.md-6` → `grid-column: span 6` at `md+`
 - `.mdOffset-2` → `grid-column-start: 3` at `md+`
 - `.mdOrder-1` → `order: 1` at `md+`
@@ -160,13 +180,14 @@ The Header applies `.hidden` (CSS `transform: translateY(-100%)`) when `directio
 
 ## File naming convention
 
-| File | Purpose |
-|---|---|
-| `ComponentName.tsx` | Component implementation |
-| `ComponentName.module.scss` | Scoped styles |
-| `index.ts` | Named barrel export |
+| File                        | Purpose                  |
+| --------------------------- | ------------------------ |
+| `ComponentName.tsx`         | Component implementation |
+| `ComponentName.module.scss` | Scoped styles            |
+| `index.ts`                  | Named barrel export      |
 
 Never use default exports from barrel files. Always use named exports:
+
 ```ts
 export { Button } from "./Button";
 export type { ButtonProps } from "./Button";

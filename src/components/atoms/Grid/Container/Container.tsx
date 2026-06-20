@@ -3,18 +3,18 @@ import { ContainerProps } from "../interfaces";
 import styles from "./Container.module.scss";
 
 export const Container = ({
-  className,
-  children,
-  fullHeight,
-  customWidth,
-  id,
-  style,
+	className,
+	children,
+	fullHeight,
+	customWidth,
+	id,
+	style,
 }: ContainerProps) => (
-  <div
-    id={id}
-    style={{ maxWidth: customWidth, ...style }}
-    className={classNames(styles.container, { [styles.fullHeight]: fullHeight }, className)}
-  >
-    {children}
-  </div>
+	<div
+		id={id}
+		style={{ maxWidth: customWidth, ...style }}
+		className={classNames(styles.container, { [styles.fullHeight]: fullHeight }, className)}
+	>
+		{children}
+	</div>
 );

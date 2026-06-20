@@ -4,15 +4,15 @@ A bare, immediately-usable Next.js 16 starter. Atomic design enforced, i18n wire
 
 ## Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript 5 strict |
-| Styling | SCSS Modules — two-layer design token system |
-| Primitives | `@base-ui/react` (Button, Checkbox, Select) |
-| i18n | `next-intl` v4 — EN + IT out of the box |
-| Forms | `react-hook-form` + `zod` + `@emailjs/browser` |
-| Class composition | `classnames` |
+| Layer             | Choice                                         |
+| ----------------- | ---------------------------------------------- |
+| Framework         | Next.js 16 (App Router)                        |
+| Language          | TypeScript 5 strict                            |
+| Styling           | SCSS Modules — two-layer design token system   |
+| Primitives        | `@base-ui/react` (Button, Checkbox, Select)    |
+| i18n              | `next-intl` v4 — EN + IT out of the box        |
+| Forms             | `react-hook-form` + `zod` + `@emailjs/browser` |
+| Class composition | `classnames`                                   |
 
 ## Quick start
 
@@ -93,12 +93,14 @@ All translation files live in `public/messages/`. Add the same key to every loca
 ```
 
 Use in server components:
+
 ```ts
 const t = await getTranslations("myPage");
 t("title"); // "Hello"
 ```
 
 Use in client components:
+
 ```ts
 const t = useTranslations("myPage");
 t("title"); // "Hello"
@@ -125,19 +127,21 @@ Toggle dark mode by setting `data-theme="dark"` on `<html>`.
 import { Container, Row, Col } from "@/components/atoms/Grid";
 
 <Container>
-  <Row>
-    <Col xs={12} md={6} lg={4}>…</Col>
-  </Row>
-</Container>
+	<Row>
+		<Col xs={12} md={6} lg={4}>
+			…
+		</Col>
+	</Row>
+</Container>;
 ```
 
 Responsive col/offset/order/alignSelf classes generated for every breakpoint: `xs sm md lg xl xxl`.
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Dev server |
-| `npm run build` | Production build |
+| Command         | Description             |
+| --------------- | ----------------------- |
+| `npm run dev`   | Dev server              |
+| `npm run build` | Production build        |
 | `npm run start` | Start production server |
-| `npm run lint` | ESLint |
+| `npm run lint`  | ESLint                  |

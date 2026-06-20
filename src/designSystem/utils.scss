@@ -1,21 +1,21 @@
 @use "mediaQueries";
 
 @mixin toRem($property, $value) {
-  #{$property}: calc($value / 16) + rem;
+	#{$property}: calc($value / 16) + rem;
 }
 
 .onlyMobile {
-  display: block;
+	display: block;
 
-  @include mediaQueries.media("md") {
-    display: none;
-  }
+	@include mediaQueries.media("md") {
+		display: none;
+	}
 }
 
 .onlyDesktop {
-  display: none;
+	display: none;
 
-  @include mediaQueries.media("md") {
-    display: block;
-  }
+	@include mediaQueries.media("md") {
+		display: block;
+	}
 }

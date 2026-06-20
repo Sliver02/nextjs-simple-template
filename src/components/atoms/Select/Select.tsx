@@ -48,7 +48,9 @@ export const Select = ({
 				onValueChange={(newValue, event) => {
 					setInternalHasValue(Boolean(newValue));
 					onValueChange?.(newValue, event);
-					onChange?.({ target: { value: newValue, name: props.name ?? "" } } as React.ChangeEvent<HTMLInputElement>);
+					onChange?.({
+						target: { value: newValue, name: props.name ?? "" },
+					} as React.ChangeEvent<HTMLInputElement>);
 				}}
 				onOpenChange={(open, event) => {
 					setIsOpen(open);

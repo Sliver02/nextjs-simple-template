@@ -2,158 +2,162 @@
 @use "../../../designSystem/variables";
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
 
-  padding: 0 1rem;
-  height: 64px;
+	padding: 0 1rem;
+	height: 64px;
 
-  background-color: var(--color-bg-raised);
-  border-bottom: 1px solid var(--color-border);
+	background-color: var(--color-bg-raised);
+	border-bottom: 1px solid var(--color-border);
 
-  transition: transform 0.3s ease, background-color 0.3s ease;
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease;
 
-  @include mq.media("md") {
-    padding: 0 2rem;
-    height: 72px;
-  }
+	@include mq.media("md") {
+		padding: 0 2rem;
+		height: 72px;
+	}
 }
 
 .hidden {
-  transform: translateY(-100%);
+	transform: translateY(-100%);
 }
 
 // ── logo ──────────────────────────────────────────────────────────────────────
 
 .logo {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 .logoLink {
-  display: flex;
-  align-items: center;
-  color: var(--color-text);
-  text-decoration: none;
+	display: flex;
+	align-items: center;
+	color: var(--color-text);
+	text-decoration: none;
 }
 
 .logoText {
-  composes: text--p-lg from global;
-  font-weight: 700;
-  color: var(--color-primary);
+	composes: text--p-lg from global;
+	font-weight: 700;
+	color: var(--color-primary);
 }
 
 // ── desktop nav ───────────────────────────────────────────────────────────────
 
 .nav {
-  display: none;
-  align-items: center;
-  gap: 1.5rem;
+	display: none;
+	align-items: center;
+	gap: 1.5rem;
 
-  @include mq.media("md") {
-    display: flex;
-  }
+	@include mq.media("md") {
+		display: flex;
+	}
 }
 
 .navLink {
-  font-size: 0.9375rem;
-  color: var(--color-text);
-  text-decoration: none;
-  transition: color 0.15s ease;
+	font-size: 0.9375rem;
+	color: var(--color-text);
+	text-decoration: none;
+	transition: color 0.15s ease;
 
-  &:hover {
-    color: var(--color-primary);
-  }
+	&:hover {
+		color: var(--color-primary);
+	}
 }
 
 // ── locale switcher ───────────────────────────────────────────────────────────
 
 .localeSwitcher {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
 }
 
 .localeLink {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--color-text-secondary) !important;
-  padding: 0.2rem 0.4rem;
-  border-radius: 0.2rem;
-  transition: color 0.15s ease, background-color 0.15s ease;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--color-text-secondary) !important;
+	padding: 0.2rem 0.4rem;
+	border-radius: 0.2rem;
+	transition:
+		color 0.15s ease,
+		background-color 0.15s ease;
 
-  &:hover {
-    color: var(--color-text) !important;
-    background-color: var(--color-bg-sunken);
-  }
+	&:hover {
+		color: var(--color-text) !important;
+		background-color: var(--color-bg-sunken);
+	}
 }
 
 // ── hamburger ─────────────────────────────────────────────────────────────────
 
 .hamburger {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  flex-shrink: 0;
-  color: var(--color-text);
-  font-size: 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	flex-shrink: 0;
+	color: var(--color-text);
+	font-size: 1.25rem;
 
-  @include mq.media("md") {
-    display: none;
-  }
+	@include mq.media("md") {
+		display: none;
+	}
 }
 
 // ── mobile overlay ────────────────────────────────────────────────────────────
 
 .mobileMenu {
-  position: fixed;
-  inset: 0;
-  z-index: 99;
+	position: fixed;
+	inset: 0;
+	z-index: 99;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
 
-  background-color: var(--color-bg);
+	background-color: var(--color-bg);
 
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease;
 
-  @include mq.media("md") {
-    display: none;
-  }
+	@include mq.media("md") {
+		display: none;
+	}
 }
 
 .mobileMenuOpen {
-  opacity: 1;
-  pointer-events: all;
+	opacity: 1;
+	pointer-events: all;
 }
 
 .mobileNav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
 }
 
 .mobileNavLink {
-  composes: text--p-lg from global;
-  color: var(--color-text);
-  text-decoration: none;
+	composes: text--p-lg from global;
+	color: var(--color-text);
+	text-decoration: none;
 
-  &:hover {
-    color: var(--color-primary);
-  }
+	&:hover {
+		color: var(--color-primary);
+	}
 }
