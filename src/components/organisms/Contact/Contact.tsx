@@ -16,6 +16,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import styles from "./Contact.module.scss";
+import { Autocomplete } from "@/components/atoms/Autocomplete/Autocomplete";
 
 const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE as string;
 const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE as string;
@@ -26,6 +27,7 @@ const contactSchema = z.object({
 	email: z.string().email("Invalid email address"),
 	message: z.string().min(10, "Message must be at least 10 characters"),
 	reason: z.string().min(2, "Reason must be at least 2 characters"),
+	region: z.string().min(2, "Region must be at least 2 characters"),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
@@ -107,12 +109,16 @@ export const Contact = () => {
 							/>
 						</Col>
 						<Col xs={12} md={6}>
-							<Input
+							<Autocomplete
 								fullWidth
-								type="email"
-								label={t("email")}
-								error={errors.email?.message}
-								{...register("email")}
+								options={[
+									{ value: "patagonia", label: t("selectOptions.general") },
+									{ value: "andes", label: t("selectOptions.support") },
+									{ value: "atacama", label: t("selectOptions.feedback") },
+								]}
+								label={t("region")}
+								error={errors.region?.message}
+								{...register("region")}
 							/>
 						</Col>
 						<Col xs={12} md={6}>
