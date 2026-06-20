@@ -1,41 +1,42 @@
 {
-  "header": {
-    "home": "Home",
-    "contact": "Contact"
-  },
-  "footer": {
-    "copyright": "All rights reserved"
-  },
-  "contact": {
-    "title": "Contact",
-    "description": "Get in touch — fill in the form below.",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send",
-    "loading": "Sending…",
-    "reason": "Reason",
-    "successMessage": "Message sent!",
-    "errorMessage": "Failed to send. Please try again.",
-    "errorPrefix": "Error:",
-    "selectOptions": {
-      "general": "General enquiry",
-      "support": "Support",
-      "feedback": "Feedback"
-    }
-  },
-  "demo": {
-    "title": "Component Showcase",
-    "subtitle": "A preview of every atom and organism included in this template."
-  },
-  "notFound": {
-    "title": "Page not found",
-    "description": "The page you are looking for does not exist.",
-    "backHome": "Back to home"
-  },
-  "error": {
-    "title": "Something went wrong",
-    "description": "An unexpected error occurred.",
-    "retry": "Try again"
-  }
+	"header": {
+		"home": "Home",
+		"contact": "Contact"
+	},
+	"footer": {
+		"copyright": "All rights reserved"
+	},
+	"contact": {
+		"title": "Contact",
+		"description": "Get in touch — fill in the form below.",
+		"name": "Name",
+		"email": "Email",
+		"message": "Message",
+		"send": "Send",
+		"loading": "Sending…",
+		"reason": "Reason",
+		"region": "Region",
+		"successMessage": "Message sent!",
+		"errorMessage": "Failed to send. Please try again.",
+		"errorPrefix": "Error:",
+		"selectOptions": {
+			"general": "General enquiry",
+			"support": "Support",
+			"feedback": "Feedback"
+		}
+	},
+	"demo": {
+		"title": "Component Showcase",
+		"subtitle": "A preview of every atom and organism included in this template."
+	},
+	"notFound": {
+		"title": "Page not found",
+		"description": "The page you are looking for does not exist.",
+		"backHome": "Back to home"
+	},
+	"error": {
+		"title": "Something went wrong",
+		"description": "An unexpected error occurred.",
+		"retry": "Try again"
+	}
 }
