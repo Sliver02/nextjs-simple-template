@@ -4,16 +4,22 @@ import { useScroll } from "@/hooks/useScroll";
 import { Link, usePathname } from "@/i18n/routing";
 import { locales } from "@/i18n/routing";
 import classNames from "classnames";
-import { ReactNode, useState } from "react";
+import { LuMenu, LuX } from "react-icons/lu";
+import { useState } from "react";
 import styles from "./Header.module.scss";
 
+export interface NavItem {
+  href: string;
+  label: string;
+}
+
 export interface HeaderProps {
-  logo?: ReactNode;
-  children?: ReactNode;
+  logo?: React.ReactNode;
+  navItems?: NavItem[];
   className?: string;
 }
 
-export const Header = ({ logo, children, className }: HeaderProps) => {
+export const Header = ({ logo, navItems, className }: HeaderProps) => {
   const { scrollY, direction } = useScroll();
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,22 +28,22 @@ export const Header = ({ logo, children, className }: HeaderProps) => {
 
   return (
     <header
-      className={classNames(
-        styles.header,
-        { [styles.hidden]: hidden, [styles.menuOpen]: menuOpen },
-        className,
-      )}
+      className={classNames(styles.header, { [styles.hidden]: hidden }, className)}
     >
       {/* Logo */}
       <div className={styles.logo}>
-        <Link href="/" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className={styles.logoLink} onClick={() => setMenuOpen(false)}>
           {logo ?? <span className={styles.logoText}>Logo</span>}
         </Link>
       </div>
 
       {/* Desktop nav */}
       <nav className={styles.nav} aria-label="Main navigation">
-        {children}
+        {navItems?.map(({ href, label }) => (
+          <Link key={href} href={href} className={styles.navLink}>
+            {label}
+          </Link>
+        ))}
         <LocaleSwitcher pathname={pathname} />
       </nav>
 
@@ -49,9 +55,7 @@ export const Header = ({ logo, children, className }: HeaderProps) => {
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen((v) => !v)}
       >
-        <span className={styles.hamburgerBar} />
-        <span className={styles.hamburgerBar} />
-        <span className={styles.hamburgerBar} />
+        {menuOpen ? <LuX /> : <LuMenu />}
       </button>
 
       {/* Mobile overlay */}
@@ -66,7 +70,11 @@ export const Header = ({ logo, children, className }: HeaderProps) => {
           aria-label="Mobile navigation"
           onClick={() => setMenuOpen(false)}
         >
-          {children}
+          {navItems?.map(({ href, label }) => (
+            <Link key={href} href={href} className={styles.mobileNavLink}>
+              {label}
+            </Link>
+          ))}
         </nav>
         <LocaleSwitcher pathname={pathname} onClick={() => setMenuOpen(false)} />
       </div>

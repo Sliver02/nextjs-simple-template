@@ -50,6 +50,31 @@ Global text utility classes (applied as plain class strings, not module refs):
 - `.text--h-xl`, `.text--p-lg`, `.text--align-center`, `.text--strong`, etc.
 - `.onlyMobile` / `.onlyDesktop` — responsive show/hide at `md` breakpoint
 
+### Conventions
+
+**No bare tag selectors in `*.module.scss`.** Global tag defaults (`h1–h4`, `p`, `a`) are set once in `globals.scss` / `text.scss`. Component stylesheets must never override them via tag selectors — add an explicit class to the element instead:
+
+```scss
+// wrong
+.card a { color: red; }
+
+// correct
+.link { color: red; }
+```
+
+**Consume design system values via `@use`, not inline literals.** Before writing a custom `font-size`, `color`, or breakpoint, check whether a DS variable, mixin, or utility class already covers it:
+
+```scss
+@use "../../../designSystem/utils";
+@use "../../../designSystem/variables";
+
+.title {
+  @include utils.toRem(font-size, variables.$font-h-sm); // not font-size: 2rem
+}
+```
+
+For colors, always reference semantic tokens (`var(--color-text)`, `var(--color-primary)`) — never palette primitives (`var(--palette-neutral-900)`) or raw hex values.
+
 ## Atomic design
 
 ```

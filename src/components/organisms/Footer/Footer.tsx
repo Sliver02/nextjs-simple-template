@@ -1,20 +1,33 @@
+import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { ReactNode } from "react";
 import styles from "./Footer.module.scss";
 
+export interface FooterNavItem {
+  href: string;
+  label: string;
+}
+
 export interface FooterProps {
-  children?: ReactNode;
+  navItems?: FooterNavItem[];
   className?: string;
 }
 
-export const Footer = ({ children, className }: FooterProps) => {
+export const Footer = ({ navItems, className }: FooterProps) => {
   const t = useTranslations("footer");
   const year = new Date().getFullYear();
 
   return (
     <footer className={className}>
       <div className={styles.inner}>
-        {children && <nav className={styles.links}>{children}</nav>}
+        {navItems && navItems.length > 0 && (
+          <nav className={styles.links}>
+            {navItems.map(({ href, label }) => (
+              <Link key={href} href={href} className={styles.link}>
+                {label}
+              </Link>
+            ))}
+          </nav>
+        )}
         <p className={styles.copyright}>
           © {year} — {t("copyright")}
         </p>

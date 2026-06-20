@@ -20,16 +20,16 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+}
 
-  a {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: color 0.15s ease;
+.link {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
 
-    &:hover {
-      color: var(--color-text);
-    }
+  &:hover {
+    color: var(--color-text);
   }
 }
 

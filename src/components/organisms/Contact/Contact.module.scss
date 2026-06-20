@@ -1,12 +1,12 @@
 .contact {
   padding: 4rem 0;
+}
 
-  h2 {
-    margin-bottom: 0.5rem;
-  }
+.title {
+  composes: text--h-sm from global;
+}
 
-  p {
-    color: var(--color-text-secondary);
-    margin-bottom: 2rem;
-  }
+.description {
+  composes: text--p-md from global;
+  color: var(--color-text-secondary);
 }

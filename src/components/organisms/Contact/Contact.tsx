@@ -81,8 +81,8 @@ export const Contact = () => {
         <Container>
           <Row>
             <Col xs={12}>
-              <h2>{t("title")}</h2>
-              <p>{t("description")}</p>
+              <h2 className={styles.title}>{t("title")}</h2>
+              <p className={styles.description}>{t("description")}</p>
             </Col>
           </Row>
 
