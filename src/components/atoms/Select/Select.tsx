@@ -3,6 +3,7 @@
 import { Select as SelectPrimitive } from "@base-ui/react/select";
 import classNames from "classnames";
 import styles from "./Select.module.scss";
+import { IoChevronDown } from "react-icons/io5";
 
 export interface SelectOption {
   value: string;
@@ -34,7 +35,7 @@ export const Select = ({
       >
         <SelectPrimitive.Value placeholder={placeholder} />
         <span aria-hidden className={styles.chevron}>
-          ▾
+          <IoChevronDown />
         </span>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Positioner className={styles.positioner}>
