@@ -1,0 +1,172 @@
+@use "designSystem/mediaQueries" as mq;
+@use "designSystem/variables";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  padding: 0 1rem;
+  height: 64px;
+
+  background-color: var(--color-bg-raised);
+  border-bottom: 1px solid var(--color-border);
+
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+  @include mq.media("md") {
+    padding: 0 2rem;
+    height: 72px;
+  }
+}
+
+.hidden {
+  transform: translateY(-100%);
+}
+
+// ── logo ──────────────────────────────────────────────────────────────────────
+
+.logo {
+  flex-shrink: 0;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+}
+
+.logoText {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+// ── desktop nav ───────────────────────────────────────────────────────────────
+
+.nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+
+  @include mq.media("md") {
+    display: flex;
+  }
+
+  a {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+
+// ── locale switcher ───────────────────────────────────────────────────────────
+
+.localeSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.localeLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-secondary) !important;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text) !important;
+    background-color: var(--color-bg-sunken);
+  }
+}
+
+// ── hamburger ─────────────────────────────────────────────────────────────────
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.25rem;
+  flex-shrink: 0;
+
+  @include mq.media("md") {
+    display: none;
+  }
+}
+
+.hamburgerBar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.menuOpen .hamburgerBar:nth-child(2) {
+  opacity: 0;
+}
+
+// ── mobile overlay ────────────────────────────────────────────────────────────
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  background-color: var(--color-bg);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+
+  @include mq.media("md") {
+    display: none;
+  }
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  a {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
