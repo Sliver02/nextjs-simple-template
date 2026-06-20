@@ -23,14 +23,24 @@ Typography tokens (`--font-body`, `--font-heading`) default to `system-ui`. Over
 
 ## SCSS modules
 
-Every component owns `ComponentName.tsx` + `ComponentName.module.scss`. Global design system files are imported via absolute paths (no `../../`):
+Every component owns `ComponentName.tsx` + `ComponentName.module.scss`. Global design system files are imported via relative paths — `sassOptions.includePaths` is a [known unresolved bug](https://github.com/vercel/next.js/issues/60088) in Turbopack (Next.js 16's default bundler):
 
 ```scss
-@use "designSystem/variables";
-@use "designSystem/mediaQueries" as mq;
+// atoms/Grid/Col/Col.module.scss — 4 levels from src/
+@use "../../../../designSystem/variables";
+@use "../../../../designSystem/mediaQueries" as mq;
+
+// organisms/Header/Header.module.scss — 3 levels from src/
+@use "../../../designSystem/mediaQueries" as mq;
 ```
 
-This works because `next.config.ts` sets `sassOptions.includePaths: ["./src"]`.
+Files within `src/designSystem/` import each other by bare name (Sass resolves them relative to the file's own directory):
+
+```scss
+// designSystem/globals.scss
+@use "variables";
+@use "mediaQueries";
+```
 
 Utility mixins:
 - `@include mq.media("md")` — `min-width` breakpoint guard (`xs sm md lg xl xxl`)

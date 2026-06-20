@@ -9,9 +9,6 @@ const nextConfig: NextConfig = {
     qualities: [75, 85],
     minimumCacheTTL: 2678400, // 31 days
   },
-  sassOptions: {
-    includePaths: ["./src"],
-  },
 };
 
 export default withNextIntl(nextConfig);

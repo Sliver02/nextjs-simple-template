@@ -1,6 +1,6 @@
 @use "sass:list";
-@use "designSystem/variables";
-@use "designSystem/mediaQueries";
+@use "../../../../designSystem/variables";
+@use "../../../../designSystem/mediaQueries";
 
 .col {
   box-sizing: border-box;
