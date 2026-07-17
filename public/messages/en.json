@@ -1,7 +1,9 @@
 {
 	"header": {
 		"home": "Home",
-		"contact": "Contact"
+		"features": "Features",
+		"contact": "Contact",
+		"more": "More"
 	},
 	"footer": {
 		"copyright": "All rights reserved"
@@ -27,7 +29,15 @@
 	},
 	"demo": {
 		"title": "Component Showcase",
-		"subtitle": "A preview of every atom and organism included in this template."
+		"subtitle": "A preview of every atom and organism included in this template.",
+		"features": {
+			"smoothTitle": "Smooth scroll",
+			"smoothBody": "Lenis powers inertial scrolling. Header links call scrollTo to glide to each section.",
+			"fadeTitle": "Scroll reveals",
+			"fadeBody": "The FadeIn atom wraps any content and fades it in on scroll with GSAP + ScrollTrigger.",
+			"iconsTitle": "Icon set",
+			"iconsBody": "lucide-react icons are passed through props — see the glyphs in the header nav."
+		}
 	},
 	"notFound": {
 		"title": "Page not found",

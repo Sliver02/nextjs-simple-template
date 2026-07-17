@@ -80,7 +80,7 @@ export const Contact = () => {
 	};
 
 	return (
-		<section className={classNames(styles.contact)}>
+		<>
 			<form onSubmit={handleSubmit(onSubmit)} noValidate>
 				<Container>
 					<Row>
@@ -161,6 +161,6 @@ export const Contact = () => {
 					)}
 				</Container>
 			</form>
-		</section>
+		</>
 	);
 };

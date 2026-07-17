@@ -1,10 +1,13 @@
 import "@/designSystem/globals.scss";
+import "lenis/dist/lenis.css";
+import { SmoothScroll } from "@/components/atoms/SmoothScroll";
 import { Footer } from "@/components/organisms/Footer";
 import { Header } from "@/components/organisms/Header";
 import { locales } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
+import { Home, LayoutGrid, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
 	title: {
@@ -34,19 +37,37 @@ export default async function LocaleLayout({
 		<html lang={locale} data-theme="light">
 			<body>
 				<NextIntlClientProvider messages={messages}>
-					<Header
-						navItems={[
-							{ href: "/", label: t("home") },
-							{ href: "/#contact", label: t("contact") },
-						]}
-					/>
-					<main style={{ paddingTop: "4.5rem" }}>{children}</main>
-					<Footer
-						navItems={[
-							{ href: "/", label: t("home") },
-							{ href: "/#contact", label: t("contact") },
-						]}
-					/>
+					<SmoothScroll>
+						<Header
+							navItems={[{ href: "/", label: t("home"), icon: <Home /> }]}
+							// Example dropdown — sections scroll into view via Lenis.
+							menus={[
+								{
+									label: t("more"),
+									items: [
+										{
+											href: "/#features",
+											label: t("features"),
+											icon: <LayoutGrid />,
+										},
+										{
+											href: "/#contact",
+											label: t("contact"),
+											icon: <Mail />,
+										},
+									],
+								},
+							]}
+						/>
+						<main style={{ paddingTop: "4.5rem" }}>{children}</main>
+						<Footer
+							navItems={[
+								{ href: "/", label: t("home") },
+								{ href: "/#features", label: t("features") },
+								{ href: "/#contact", label: t("contact") },
+							]}
+						/>
+					</SmoothScroll>
 				</NextIntlClientProvider>
 			</body>
 		</html>

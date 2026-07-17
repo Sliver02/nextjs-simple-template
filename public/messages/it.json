@@ -1,7 +1,9 @@
 {
 	"header": {
 		"home": "Home",
-		"contact": "Contatti"
+		"features": "Funzionalità",
+		"contact": "Contatti",
+		"more": "Altro"
 	},
 	"footer": {
 		"copyright": "Tutti i diritti riservati"
@@ -26,7 +28,15 @@
 	},
 	"demo": {
 		"title": "Showcase componenti",
-		"subtitle": "Anteprima di ogni atom e organism incluso in questo template."
+		"subtitle": "Anteprima di ogni atom e organism incluso in questo template.",
+		"features": {
+			"smoothTitle": "Scroll fluido",
+			"smoothBody": "Lenis gestisce lo scroll inerziale. I link dell'header usano scrollTo per scorrere fino a ogni sezione.",
+			"fadeTitle": "Rivelazioni allo scroll",
+			"fadeBody": "L'atom FadeIn avvolge qualsiasi contenuto e lo fa apparire allo scroll con GSAP + ScrollTrigger.",
+			"iconsTitle": "Set di icone",
+			"iconsBody": "Le icone lucide-react vengono passate tramite props — guarda i glifi nella navigazione dell'header."
+		}
 	},
 	"notFound": {
 		"title": "Pagina non trovata",
