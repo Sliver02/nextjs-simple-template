@@ -7,19 +7,75 @@
 	gap: 0.75rem;
 	height: 100%;
 
-	padding: 1.5rem;
+	// Custom properties (not a plain shorthand) so .divider below can bleed to the
+	// exact card edge even when a consumer overrides the padding.
+	--card-padding-x: 1.5rem;
+	--card-padding-y: 1.5rem;
+	padding: var(--card-padding-y) var(--card-padding-x);
 	border-radius: 0.5rem;
 	background-color: var(--color-bg-raised);
+}
+
+// ─── Surface variants ──────────────────────────────────────────────────────
+.flat {
+	border: none;
+}
+
+.shadow {
+	border: none;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.border {
 	border: 1px solid var(--color-border);
+}
+
+// Hover/focus affordance only applies when the card is a link — a static card
+// has nothing to invite a click toward.
+.linked {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
 
 	transition:
 		transform 0.2s ease,
+		box-shadow 0.2s ease,
 		border-color 0.2s ease;
 
-	&:hover {
+	&:hover,
+	&:focus-visible {
 		transform: translateY(-4px);
+	}
+
+	&.border:hover,
+	&.border:focus-visible {
 		border-color: var(--color-border-focus);
 	}
+
+	&.shadow:hover,
+	&.shadow:focus-visible {
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-border-focus);
+		outline-offset: 4px;
+	}
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+}
+
+.divider {
+	padding-bottom: 0.75rem;
+	// Bleed out to the card's own edges, then pad back in — the rule reads as
+	// "cancel the card's padding, then reapply it" rather than a guessed offset.
+	margin-inline: calc(var(--card-padding-x) * -1);
+	padding-inline: var(--card-padding-x);
+	border-bottom: 1px solid var(--color-border);
 }
 
 .icon {
@@ -39,6 +95,35 @@
 	color: var(--color-text);
 }
 
+.subtitle {
+	@include utils.toRem(font-size, variables.$font-sm);
+	color: var(--color-text-secondary);
+}
+
+// ─── Size variants — title/subtitle scale ──────────────────────────────────
+// "medium" is the default above (font-lg / font-sm) — left as-is so an existing
+// caller that never passes `size` sees no change.
+.medium {
+}
+
+.small {
+	.title {
+		@include utils.toRem(font-size, variables.$font-md);
+	}
+}
+
+.large {
+	.title {
+		// Matches the page's own h3 scale (designSystem/text.scss) so a card used
+		// as a section's primary header reads at the same size as the rest of them.
+		@include utils.toRem(font-size, variables.$font-h-lg);
+	}
+
+	.subtitle {
+		@include utils.toRem(font-size, variables.$font-lg);
+	}
+}
+
 .body {
 	@include utils.toRem(font-size, variables.$font-md);
 	color: var(--color-text-secondary);
@@ -47,4 +132,10 @@
 .footer {
 	margin-top: auto;
 	padding-top: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.linked {
+		transition: none;
+	}
 }
