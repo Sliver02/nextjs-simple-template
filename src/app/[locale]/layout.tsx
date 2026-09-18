@@ -3,20 +3,14 @@ import "lenis/dist/lenis.css";
 import { SmoothScroll } from "@/components/atoms/SmoothScroll";
 import { Footer } from "@/components/organisms/Footer";
 import { Header } from "@/components/organisms/Header";
+import { rootMeta } from "@/common/seo";
+import { structuredData } from "@/common/seoContent";
 import { locales } from "@/i18n/routing";
-import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Home, LayoutGrid, Mail } from "lucide-react";
 
-export const metadata: Metadata = {
-	title: {
-		default: "Next.js Simple Template",
-		template: "%s | Next.js Simple Template",
-	},
-	description:
-		"A bare, immediately-usable Next.js 16 starter with atomic design, i18n, and SCSS modules.",
-};
+export const generateMetadata = rootMeta;
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
@@ -35,6 +29,12 @@ export default async function LocaleLayout({
 
 	return (
 		<html lang={locale} data-theme="light">
+			<head>
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData(locale)) }}
+				/>
+			</head>
 			<body>
 				<NextIntlClientProvider messages={messages}>
 					<SmoothScroll>
